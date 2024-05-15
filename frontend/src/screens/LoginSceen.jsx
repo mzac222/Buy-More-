@@ -8,6 +8,7 @@ import Loader from '../Components/Loader';
 import { useLoginMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
 import {toast} from "react-toastify";
+import CheckoutSteps from '../Components/CheckOutSteps';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -36,6 +37,7 @@ const LoginScreen = () => {
         const res=await login({email,password}).unwrap();
         dispatch(setCredentials({...res,}))
         navigate(redirect);
+        toast.success(`Welcome User}`);
 
     }
     catch(error){
@@ -46,6 +48,7 @@ toast.error(error?.data?.message || error.error);
 
   return (
     <FormContainer>
+    <CheckoutSteps step1/>
       <h1>Sign In</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group className='my-2' controlId='email'>

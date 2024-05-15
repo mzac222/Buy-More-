@@ -44,6 +44,7 @@ const RegisterScreen = () => {
         const res=await register({name,email,password}).unwrap();
         dispatch(setCredentials({...res,}))
         navigate(redirect);
+        toast.success(`Welcome ${name}`);
 
     }
     catch(error){

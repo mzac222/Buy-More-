@@ -35,10 +35,19 @@ credentials: "include"
         }),
         keepUnusedDataFor:5
     }),
+    profile: builder.mutation({
+        query:(data)=>({
+            url:`${USERS_URL}/profile`,
+            method:'PUT',
+            body:data,
+             
+        }),
+        keepUnusedDataFor:5
+    }),
  
 
 }), 
 });
 
 
-export const { useLoginMutation,useLogoutMutation,useRegisterMutation}=usersApiSlice;
+export const { useLoginMutation,useLogoutMutation,useRegisterMutation,useProfileMutation}=usersApiSlice;
